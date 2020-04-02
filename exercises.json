@@ -1,0 +1,13 @@
+{
+	"exerices": [
+		{
+			"exerciseID": 1,
+			"imageURL": "www.www.www",
+			"title": "Title",
+			"Description": "textextetx"
+		},
+		{
+			"exerciseID": 2
+		}
+	]
+}
