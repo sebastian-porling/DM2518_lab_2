@@ -4,6 +4,8 @@ import * as React from 'react';
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
+import ClassScreen from '../screens/ClassScreen';
+import FindScreen from '../screens/FindScreen';
 
 const BottomTab = createBottomTabNavigator();
 const INITIAL_ROUTE_NAME = 'Home';
@@ -32,6 +34,22 @@ export default function BottomTabNavigator({ navigation, route }) {
           tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-book" />,
         }}
       />
+      <BottomTab.Screen
+        name="Search"
+        component={FindScreen}
+        options={{
+          title: 'Find',
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-search" />,
+        }}
+      />
+      <BottomTab.Screen
+        name="Class"
+        component={ClassScreen}
+        options={{
+          title: 'Category',
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-folder" />,
+        }}
+      />
     </BottomTab.Navigator>
   );
 }
@@ -44,5 +62,9 @@ function getHeaderTitle(route) {
       return 'How to get started';
     case 'Links':
       return 'Links to learn more';
+    case 'Search':
+      return 'Search an exercise';
+    case 'Class':
+      return 'Train each muscle groups';
   }
 }

@@ -10,7 +10,8 @@ export default function(containerRef) {
         screens: {
           Home: 'home',
           Links: 'links',
-          Settings: 'settings',
+          Search:"search",
+          Class: 'category',
         },
       },
     },
