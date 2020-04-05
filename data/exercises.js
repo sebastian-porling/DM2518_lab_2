@@ -12,7 +12,7 @@
 		"exerciseID": 2,
 		"category": "legs",
 		"imageURL": require("../assets/images/2.jpg"),
-		"title": "legs",
+		"title": "Lunge Squat",
 		"description": "Dewayne Riggins, celebrity trainer and Founder and CEO of Inspirational Fitness, says you can work your quads and glutes with reverse lunges 30 seconds on each leg. How to do them: Stand in an upright position and then step back with one leg; bend knees as low as you can. Drop your back knee to one inch off the ground or as low as you can and be sure front knee is not leaning over the foot. Repeat with the other leg."
 	},
 	{

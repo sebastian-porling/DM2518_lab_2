@@ -2,21 +2,23 @@
 import React from 'react'
 import ListItem from './ListItem'
 import {ScrollView, FlatList} from 'react-native'
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet} from 'react-native';
 
 class TrainList extends React.Component{
     render(){
     return (
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+
             <FlatList
                 data={this.props.exercises} 
                 renderItem={({item})=>
                 <ListItem 
                     item={item}
                     navigation = {this.props.navigator.navigation}
-                ></ListItem>}
+                ></ListItem>
+              }
+              keyExtractor={(item, index) => index.toString()}
             />
-        </ScrollView>
+
         );
     }
 }

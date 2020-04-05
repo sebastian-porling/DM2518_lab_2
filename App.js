@@ -9,6 +9,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import ExercisesScreen from './screens/ExerciseScreen'
 import BottomTabNavigator from './navigation/BottomTabNavigator';
 import useLinking from './navigation/useLinking';
+import LinksScreen from './screens/LinksScreen';
 
 const Stack = createStackNavigator();
 
@@ -54,6 +55,7 @@ export default function App(props) {
           <Stack.Navigator>
             <Stack.Screen name="Root" component={BottomTabNavigator} />
             <Stack.Screen name="details" component={ExercisesScreen} />
+            <Stack.Screen name="links" component={LinksScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       </View>

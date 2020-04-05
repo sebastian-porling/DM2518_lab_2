@@ -7,15 +7,18 @@ export default function ClassScreen(navigator, ctrain){
     const categories = categoryData.categories
     ctrain = []
     return(
-        <ScrollView styles={styles.container}>
         <FlatList
             numColumns={2}
             data={categories} 
             renderItem={({item})=>
             <TouchableOpacity 
                 style={styles.class}
-                onPress={() => {ctrain = _classify(item.name)
-                console.log(ctrain)
+                onPress={() => {
+                    ctrain = _classify(item.name)
+                    navigator.navigation.navigate('links',
+                    {
+                        ctrain:{ctrain}
+                    })
                 }}
             >
                     <Image
@@ -24,13 +27,9 @@ export default function ClassScreen(navigator, ctrain){
                     />
                     <Text style={styles.text}>{item.name}</Text>
             </TouchableOpacity>}  
+            keyExtractor={(item, index) => index.toString()}
         />
-            <TrainList
-                exercises= {ctrain}
-                navigator = {navigator}
-            /> 
-
-        </ScrollView>      
+     
     )
 }
 
@@ -52,20 +51,17 @@ const exercises = exerciseData.exercises
 
 const styles = StyleSheet.create({
     container:{
-        padding:24,
-        justifyContent: 'center',
-        alignItems: 'center',
-        flex:1,
+         flex:1,
+         padding:24,
+         justifyContent: "space-between",
+         flexDirection: 'column',
+         alignItems: 'center',
     },
     class: {
         margin: 16,
         paddingVertical: 8,
         borderWidth: 4,
         borderRadius: 6,
-        color: "#20232a",
-        textAlign: "center",
-        fontSize: 30,
-        fontWeight: "bold"
     },
     img:{
         borderRadius: 2,
@@ -76,6 +72,8 @@ const styles = StyleSheet.create({
     text:{
         marginTop:10,
         fontSize:20,
-        fontFamily:'lucida grande'
+        fontWeight:"bold",
+        textAlign:"center",
+       // fontFamily:'lucida grande'
     }})
 
