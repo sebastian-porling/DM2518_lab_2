@@ -1,11 +1,15 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {View, Text, TouchableHighlight} from 'react-native';
 import * as React from 'react';
 
+import HamburgerIcon from '../components/HamburgerIcon';
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import ClassScreen from '../screens/ClassScreen';
 import FindScreen from '../screens/FindScreen';
+import AboutScreen from '../screens/AboutScreen';
+import { color } from 'react-native-reanimated';
 
 const BottomTab = createBottomTabNavigator();
 const INITIAL_ROUTE_NAME = 'Home';
@@ -14,7 +18,19 @@ export default function BottomTabNavigator({ navigation, route }) {
   // Set the header title on the parent stack navigator depending on the
   // currently active tab. Learn more in the documentation:
   // https://reactnavigation.org/docs/en/screen-options-resolution.html
-  navigation.setOptions({ headerTitle: getHeaderTitle(route) });
+  navigation.setOptions({ 
+    headerLeft: () => (<HamburgerIcon navigation={navigation}/>),
+    headerTitle: getHeaderTitle(route),
+    headerRight: () => (
+      <View style={{marginRight:20}}>
+        <TouchableHighlight
+        onPress={() => alert('This is a dialog','Press the button!')}
+      >
+        <Text style={{color:'#007AFF', fontSize:20}}>Info</Text>
+      </TouchableHighlight>
+      </View>
+    )
+  });
 
   return (
     <BottomTab.Navigator initialRouteName={INITIAL_ROUTE_NAME}>

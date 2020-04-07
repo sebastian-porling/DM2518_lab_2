@@ -1,66 +1,50 @@
 import * as React from 'react';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
-import { SplashScreen } from 'expo';
-import * as Font from 'expo-font';
-import { Ionicons } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
+import HamburgerIcon from './components/HamburgerIcon';
 import ExercisesScreen from './screens/ExerciseScreen'
+import AboutScreen from './screens/AboutScreen';
 import BottomTabNavigator from './navigation/BottomTabNavigator';
-import useLinking from './navigation/useLinking';
 import LinksScreen from './screens/LinksScreen';
 
 const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
 
 export default function App(props) {
-  const [isLoadingComplete, setLoadingComplete] = React.useState(false);
-  const [initialNavigationState, setInitialNavigationState] = React.useState();
-  const containerRef = React.useRef();
-  const { getInitialState } = useLinking(containerRef);
-
-  // Load any resources or data that we need prior to rendering the app
-  React.useEffect(() => {
-    async function loadResourcesAndDataAsync() {
-      try {
-        SplashScreen.preventAutoHide();
-
-        // Load our initial navigation state
-        setInitialNavigationState(await getInitialState());
-
-        // Load fonts
-        await Font.loadAsync({
-          ...Ionicons.font,
-          'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
-        });
-      } catch (e) {
-        // We might want to provide this error information to an error reporting service
-        console.warn(e);
-      } finally {
-        setLoadingComplete(true);
-        SplashScreen.hide();
-      }
-    }
-
-    loadResourcesAndDataAsync();
-  }, []);
-
-  if (!isLoadingComplete && !props.skipLoadingScreen) {
-    return null;
-  } else {
     return (
       <View style={styles.container}>
         {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-        <NavigationContainer ref={containerRef} initialState={initialNavigationState}>
-          <Stack.Navigator>
-            <Stack.Screen name="Root" component={BottomTabNavigator} />
-            <Stack.Screen name="details" component={ExercisesScreen} />
-            <Stack.Screen name="links" component={LinksScreen} />
-          </Stack.Navigator>
+        <NavigationContainer>
+        <Drawer.Navigator>
+            <Drawer.Screen component={Tabs} name="Home" navigation={props.navigation}/>
+            <Drawer.Screen name="About" component={About} navigation={props.navigation}/>
+          </Drawer.Navigator>
         </NavigationContainer>
       </View>
     );
-  }
+  //}
+}
+
+function About({navigation}){
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="About" component={AboutScreen} options={({navigation}) =>
+        ({headerLeft: () => (<HamburgerIcon navigation={navigation}/>)})}/>
+    </Stack.Navigator>
+  );
+};
+
+function Tabs({navigation}){
+  return (
+        <Stack.Navigator>
+            <Stack.Screen name="Root" component={BottomTabNavigator} navigation={navigation}/>
+            <Stack.Screen name="details" component={ExercisesScreen} />
+            <Stack.Screen name="links" component={LinksScreen} />
+          </Stack.Navigator>
+  );
 }
 
 const styles = StyleSheet.create({

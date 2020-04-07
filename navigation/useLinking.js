@@ -12,6 +12,7 @@ export default function(containerRef) {
           Links: 'links',
           Search:"search",
           Class: 'category',
+          About: 'about'
         },
       },
     },

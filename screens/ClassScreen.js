@@ -7,7 +7,8 @@ export default function ClassScreen(navigator, ctrain){
     const categories = categoryData.categories
     ctrain = []
     return(
-        <FlatList
+        <View style={styles.container}>
+            <FlatList
             numColumns={2}
             data={categories} 
             renderItem={({item})=>
@@ -29,6 +30,8 @@ export default function ClassScreen(navigator, ctrain){
             </TouchableOpacity>}  
             keyExtractor={(item, index) => index.toString()}
         />
+        </View>
+        
      
     )
 }
@@ -51,29 +54,32 @@ const exercises = exerciseData.exercises
 
 const styles = StyleSheet.create({
     container:{
-         flex:1,
+         /*flex:1,
          padding:24,
-         justifyContent: "space-between",
+         justifyContent: 'center',
          flexDirection: 'column',
-         alignItems: 'center',
+         alignItems: 'center',*/
+         flex: 1, 
+		alignItems: 'center', 
+		justifyContent: 'center' 
     },
     class: {
         margin: 16,
-        paddingVertical: 8,
-        borderWidth: 4,
-        borderRadius: 6,
+        padding: 15,
+        borderRadius: 5,
+        backgroundColor: '#fafafa',
+        shadowRadius: 5,
+        shadowOpacity: 0.2
     },
     img:{
-        borderRadius: 2,
-        width: 100, 
-        height: 100,
+        borderRadius: 4,
+        width: 150, 
+        height: 150,
         alignSelf: 'center',
     },
     text:{
         marginTop:10,
         fontSize:20,
-        fontWeight:"bold",
         textAlign:"center",
-       // fontFamily:'lucida grande'
     }})
 

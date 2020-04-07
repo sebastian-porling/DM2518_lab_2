@@ -8,7 +8,7 @@ export default function FindScreen(navigator) {
     return (
         <View>
             <TextInput
-                style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+                style={{ height: 40, backgroundColor: '#fafafa', margin: 20, padding: 10, borderRadius: 7, shadowRadius: 5, shadowOpacity: 0.2, fontSize: 20 }}
                 onChangeText={text => setData(_onChangeText(text))}
                 placeholder="Type name of training here"
             /> 
