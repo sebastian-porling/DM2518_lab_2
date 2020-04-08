@@ -32,7 +32,7 @@ class ListItem extends React.Component{
     render(){
         return(
             <View style={style.listItem}>
-            <TouchableOpacity 
+            <TouchableOpacity style={{paddingRight: 100}}
                 onPress = {()=> this.props.navigation.navigate('details',
                 {
                     item:this.props.item
