@@ -28,9 +28,8 @@ class ListItem extends React.Component{
 
     render(){
         return(
-            <View>
+            <View style={style.listItem}>
             <TouchableOpacity 
-                style={style.listItem}
                 onPress = {()=> this.props.navigation.navigate('details',
                 {
                     item:this.props.item
@@ -38,7 +37,7 @@ class ListItem extends React.Component{
                 >
                 <View>
                 <Text style={style.listItemText}>{this.props.item.title}</Text>
-
+                
                 </View>
             </TouchableOpacity>
             <Switch
@@ -48,6 +47,7 @@ class ListItem extends React.Component{
                 })
             }
             value={this.state.value} 
+            style={{position: 'absolute', right: 20}}
             ></Switch>
         </View>)
     }
