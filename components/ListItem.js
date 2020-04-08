@@ -10,6 +10,9 @@ const style = StyleSheet.create({
         backgroundColor: '#f8f8f8',
         borderBottomWidth:1,
         borderColor:'#eee',
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'flex-start'
     },
 
     listItemText:{
