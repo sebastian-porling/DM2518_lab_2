@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import {View, Text, TouchableHighlight} from 'react-native';
+import {View, Text, TouchableHighlight, Platform} from 'react-native';
 import * as React from 'react';
 
 import HamburgerIcon from '../components/HamburgerIcon';
@@ -8,8 +8,7 @@ import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import ClassScreen from '../screens/ClassScreen';
 import FindScreen from '../screens/FindScreen';
-import AboutScreen from '../screens/AboutScreen';
-import { color } from 'react-native-reanimated';
+import Colors from '../constants/Colors';
 
 const BottomTab = createBottomTabNavigator();
 const INITIAL_ROUTE_NAME = 'Home';
@@ -33,13 +32,21 @@ export default function BottomTabNavigator({ navigation, route }) {
   });
 
   return (
-    <BottomTab.Navigator initialRouteName={INITIAL_ROUTE_NAME}>
+    <BottomTab.Navigator initialRouteName={INITIAL_ROUTE_NAME}
+    tabBarOptions={{
+      activeTintColor: '#5e5d5d',
+      inactiveTintColor: '#9a9a9a',
+      style: {
+        backgroundColor: Colors.mainColor
+      }
+      
+    }}>
       <BottomTab.Screen
         name="Home"
         component={HomeScreen}
         options={{
-          title: 'Home Page',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-code-working" />,
+          title: 'All',
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name={Platform.OS == 'ios' ? "ios-code-working" : "md-code-working"} />,
         }}
       />
       <BottomTab.Screen
@@ -47,7 +54,7 @@ export default function BottomTabNavigator({ navigation, route }) {
         component={LinksScreen}
         options={{
           title: 'All',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-book" />,
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name={Platform.OS == 'ios' ? "ios-book" : "md-book"} />,
         }}
       />
       <BottomTab.Screen
@@ -55,7 +62,7 @@ export default function BottomTabNavigator({ navigation, route }) {
         component={FindScreen}
         options={{
           title: 'Find',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-search" />,
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name={Platform.OS == 'ios' ? "ios-search" : "md-search"} />,
         }}
       />
       <BottomTab.Screen
@@ -63,7 +70,7 @@ export default function BottomTabNavigator({ navigation, route }) {
         component={ClassScreen}
         options={{
           title: 'Category',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-folder" />,
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name={Platform.OS == 'ios' ? "ios-folder" : "md-folder"} />,
         }}
       />
     </BottomTab.Navigator>
