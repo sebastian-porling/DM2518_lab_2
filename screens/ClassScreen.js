@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Image, ScrollView, StyleSheet, Text, View, FlatList, TouchableOpacity} from 'react-native';
+import { Image, Switch, StyleSheet, Text, View, FlatList, TouchableOpacity} from 'react-native';
 import TrainList from '../components/TrainList'
 
 export default function ClassScreen(navigator, ctrain){

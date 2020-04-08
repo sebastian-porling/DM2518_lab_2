@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import TrainList from '../components/TrainList';
 
 export default function LinksScreen(navigator) {
+
   navigator.navigation.setOptions({
     headerTitle: ('List of exercises')
   });
@@ -22,4 +23,5 @@ export default function LinksScreen(navigator) {
     />
   );
 }
+
 
