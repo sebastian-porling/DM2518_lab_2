@@ -25,6 +25,7 @@ export default function ClassScreen(navigator, ctrain){
                     <Image
                     source = {item.img}
                     style={styles.img} 
+                    resizeMethod='scale'
                     />
                     <Text style={styles.text}>{item.name}</Text>
             </TouchableOpacity>}  
@@ -73,9 +74,9 @@ const styles = StyleSheet.create({
     },
     img:{
         borderRadius: 4,
-        width: 150, 
-        height: 150,
-        alignSelf: 'center',
+        width: 100, 
+        height: 100,
+        alignSelf: 'center'
     },
     text:{
         marginTop:10,

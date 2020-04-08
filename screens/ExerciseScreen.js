@@ -17,7 +17,7 @@ export default function ExercisesScreen(navigator){
                 source = {item.imageURL}
                 style={styles.img} 
             />
-            <Text style={styles.text}>Description: {item.description}</Text>
+            <Text style={styles.text}>{item.description}</Text>
             </View>
             
         </ScrollView>
