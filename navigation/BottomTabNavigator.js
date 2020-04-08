@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import {View, Text, TouchableHighlight, Platform} from 'react-native';
+import {View, Text, TouchableHighlight, Platform, Alert} from 'react-native';
 import * as React from 'react';
 
 import HamburgerIcon from '../components/HamburgerIcon';
@@ -23,7 +23,7 @@ export default function BottomTabNavigator({ navigation, route }) {
     headerRight: () => (
       <View style={{marginRight:20}}>
         <TouchableHighlight
-        onPress={() => alert('This is a dialog','Press the button!')}
+        onPress={() => Platform.OS == 'web' ? alert('This is a dialog','Press the button!') : Alert.alert('This is a dialog','Press the button!')}
       >
         <Text style={{color:'#007AFF', fontSize:20}}>Info</Text>
       </TouchableHighlight>
@@ -45,7 +45,7 @@ export default function BottomTabNavigator({ navigation, route }) {
         name="Home"
         component={HomeScreen}
         options={{
-          title: 'All',
+          title: 'Home',
           tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name={Platform.OS == 'ios' ? "ios-code-working" : "md-code-working"} />,
         }}
       />

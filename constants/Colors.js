@@ -12,5 +12,5 @@ export default {
   warningText: '#666804',
   noticeBackground: tintColor,
   noticeText: '#fff',
-  mainColor: Platform.OS =='ios' ? '#add9ff' : '#c0ffad'
+  mainColor: Platform.OS =='ios' ? '#add9ff' : Platform.OS == 'android' ? '#ff9999' : '#c0ffad'
 };
