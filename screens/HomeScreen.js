@@ -11,7 +11,8 @@ export default function HomeScreen() {
         <ImageBackground 
           style={styles.img}
           source={require("../assets/images/bg.jpeg")}>
-        <Text style={styles.text}>Welcome to Fitness Club! Let's Start from Now!</Text>
+        <Text style={styles.text}>Welcome to Fitness Club! </Text>
+        <Text style={styles.text}>Let's Start from Now!</Text>
         </ImageBackground>
     </View>
   );
